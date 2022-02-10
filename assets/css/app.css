@@ -3413,3 +3413,9 @@ input[switch="dark"]:checked + label {
 .etc-text-black{ color: #000000; }
 .etc-text-navy{ color: #173153; }
 .etc-text-light{ color: rgba(0, 0, 0, 0.6);}
+
+.etc-bg-gray{ background: rgba(0, 0, 0, 0.04); }
+
+.form-control{
+  border-radius: 0;
+}
