@@ -213,7 +213,79 @@
                 <div class="page-content">
                     <div class="container-fluid">
 
-                        <div class="etc-card-1">
+                        <div class="etc-card-1 position-relative"
+                            x-data="{
+                                'isAccountGroupModalOpen': false,
+                                'accountGroup' : 'fixed-spread-account',
+                            }"
+                        >
+                            <div
+                                class="etc-modal etc-card-1"
+                                role="dialog"
+                                tabindex="-1"
+                                x-show="isAccountGroupModalOpen"
+                                x-on:click.away="isAccountGroupModalOpen = false"
+                                x-transition
+                                x-cloak
+                            >
+                                <div class="d-flex justify-content-between" style="border-bottom: 3px solid #F8C12C;">
+                                    <h4 class="mb-0"><img src="./assets/icons/card-title.svg" alt="">ACCOUNT GROUPS</h4>
+                                    <button class="btn p-0 mr-3" aria-label="Close" x-on:click="isAccountGroupModalOpen=false">✖</button>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-3"></div>
+                                    <div class="col-3">
+                                        <div class="etc-card-2 px-2 py-4">
+                                            <h5 class="text-center etc-text-black font-weight-bold">Fixed Spread Account</h5>
+                                            <h2 class="text-center etc-text-navy font-weight-bold font-size-30">$100</h2>
+                                            <p class="text-center">minimum funding</p>
+                                            <p class="mb-2">Benefit from industry-leading entry prices</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 1 PIP fixed spread</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Up To 1:500 Leverage</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 100$ Minimum funding</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> USD is the main currency</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Islamic account - No Swap</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Minimum lot 0.01</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Expert advisor</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Heading is available</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 4 Digits</p>
+                                            <p class="mb-2"><img src="./assets/icons/times.svg" alt="" class="ml-1 mb-1"> Scalping is not available</p>
+                                            <div class="text-center mt-4">
+                                                <button type="button" class="btn etc-btn-1 waves-effect waves-light px-4"
+                                                    @click="accountGroup = 'fixed-spread-account'; isAccountGroupModalOpen = false"
+                                                >SELECT NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="etc-card-2 px-2 py-4">
+                                            <h5 class="text-center etc-text-black font-weight-bold">Variable Spread Account</h5>
+                                            <h2 class="text-center etc-text-navy font-weight-bold font-size-30">$500</h2>
+                                            <p class="text-center">minimum funding</p>
+                                            <p class="mb-2">Receive even tighter spreads and commissions</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 1 PIP fixed spread</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Up To 1:500 Leverage</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 100$ Minimum funding</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> USD is the main currency</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Islamic account - No Swap</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Minimum lot 0.01</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Expert advisor</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> Heading is available</p>
+                                            <p class="mb-2"><img src="./assets/icons/check.svg" alt="" class="ml-1"> 4 Digits</p>
+                                            <p class="mb-2"><img src="./assets/icons/times.svg" alt="" class="ml-1 mb-1"> Scalping is not available</p>
+                                            <div class="text-center mt-4">
+                                                <button type="button" class="btn etc-btn-1 waves-effect waves-light px-4"
+                                                    @click="accountGroup = 'variable-spread-account'; isAccountGroupModalOpen = false"
+                                                >SELECT NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3"></div>
+                                </div>
+                                
+                            </div>
+
                             <h4><img src="./assets/icons/card-title.svg" alt=""> OPEN DEMO ACCOUNT</h4>
 
                             <p class="p-3 mb-4" style="background: rgba(0, 0, 0, 0.08); border-top: 3px solid #F8C12C;">
@@ -226,15 +298,19 @@
                                 <div class="col-lg-6">
                                     <div class="row mb-3">
                                         <label class="col-sm-4 col-form-label">Account Group</label>
-                                        <div class="col-sm-8">
-                                          <select class="form-control">
-                                              <option value="">Fixed Spread Account</option>
-                                          </select>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" x-model="accountGroup">
+                                                <option value="fixed-spread-account">Fixed Spread Account</option>
+                                                <option value="variable-spread-account">Variable Spread Account</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1 d-flex align-items-center pl-0">
+                                            <img src="./assets/icons/help.svg" x-on:click="isAccountGroupModalOpen=true">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-4 col-form-label">Currency Base</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                           <select class="form-control">
                                               <option value="">USD</option>
                                           </select>
@@ -242,7 +318,7 @@
                                     </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-4 col-form-label">Leverage</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                           <select class="form-control">
                                               <option value="">1:1</option>
                                           </select>
@@ -250,7 +326,7 @@
                                     </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-4 col-form-label">Deposit</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                           <select class="form-control">
                                               <option value="">100</option>
                                           </select>
@@ -258,18 +334,18 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-4"></div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="inlineFormCheck">
                                                 <label class="form-check-label" for="inlineFormCheck">
-                                                  I agree the terms and conditions
+                                                    I agree <a href="#" class="etc-text-light"><u>the terms and conditions</u> </a>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-4"></div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                             <button type="button" class="btn etc-btn-1 btn-block waves-effect waves-light mb-1 font-size-14 font-weight-bold">PROCEED</button>
                                         </div>
                                     </div>
@@ -353,6 +429,7 @@
         <script src="assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="assets/libs/simplebar/simplebar.min.js"></script>
         <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/alpine.js"></script>
 
         <script src="assets/js/app.js"></script>
 
